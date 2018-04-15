@@ -35,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        guard let navController = window?.rootViewController as? UINavigationController, let listSelectionVC = navController.viewControllers.first as? ListSelectionViewController else { return }
+        let cloudKitProvider = CloudKitProvider()
+        cloudKitProvider.authenticate(presenter: listSelectionVC)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
