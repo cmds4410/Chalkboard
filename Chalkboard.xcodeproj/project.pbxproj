@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3AA2CE9208415EC0076E898 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2CE8208415EC0076E898 /* CloudKitProvider.swift */; };
+		B3AA2CEB208424880076E898 /* UserFacingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2CEA208424880076E898 /* UserFacingStrings.swift */; };
+		B3AA2CF5208425600076E898 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2CF4208425600076E898 /* CloudKitProvider.swift */; };
 		B3F61EFA20840B0400B7A52E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F61EF920840B0400B7A52E /* AppDelegate.swift */; };
 		B3F61EFC20840B0400B7A52E /* ListSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F61EFB20840B0400B7A52E /* ListSelectionViewController.swift */; };
 		B3F61EFF20840B0400B7A52E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F61EFD20840B0400B7A52E /* Main.storyboard */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B3AA2CE8208415EC0076E898 /* CloudKitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudKitProvider.swift; path = Providers/CloudKitProvider.swift; sourceTree = "<group>"; };
+		B3AA2CEA208424880076E898 /* UserFacingStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFacingStrings.swift; sourceTree = "<group>"; };
+		B3AA2CF4208425600076E898 /* CloudKitProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitProvider.swift; sourceTree = "<group>"; };
 		B3F61EF620840B0400B7A52E /* Chalkboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chalkboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F61EF920840B0400B7A52E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F61EFB20840B0400B7A52E /* ListSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSelectionViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3AA2CEE208424B50076E898 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B3AA2CEA208424880076E898 /* UserFacingStrings.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		B3AA2CF3208425450076E898 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				B3AA2CF4208425600076E898 /* CloudKitProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		B3F61EED20840B0400B7A52E = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +82,8 @@
 				B3F61F0B20840C5200B7A52E /* Chalkboard.entitlements */,
 				B3F61EF920840B0400B7A52E /* AppDelegate.swift */,
 				B3F61EFB20840B0400B7A52E /* ListSelectionViewController.swift */,
-				B3AA2CE8208415EC0076E898 /* CloudKitProvider.swift */,
+				B3AA2CF3208425450076E898 /* Providers */,
+				B3AA2CEE208424B50076E898 /* Utility */,
 				B3F61EFD20840B0400B7A52E /* Main.storyboard */,
 				B3F61F0020840B0500B7A52E /* Assets.xcassets */,
 				B3F61F0220840B0500B7A52E /* LaunchScreen.storyboard */,
@@ -162,7 +181,8 @@
 			files = (
 				B3F61EFC20840B0400B7A52E /* ListSelectionViewController.swift in Sources */,
 				B3F61EFA20840B0400B7A52E /* AppDelegate.swift in Sources */,
-				B3AA2CE9208415EC0076E898 /* CloudKitProvider.swift in Sources */,
+				B3AA2CEB208424880076E898 /* UserFacingStrings.swift in Sources */,
+				B3AA2CF5208425600076E898 /* CloudKitProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

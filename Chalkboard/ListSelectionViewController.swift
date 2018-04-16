@@ -8,21 +8,25 @@
 
 import UIKit
 
-protocol AlertPresenter {
-    func presentAlert(alert: UIAlertController)
+protocol AlertPresenter: AnyObject {
+    func presentAlert(_ alert: UIAlertController)
 }
 
 class ListSelectionViewController: UIViewController {
 
+    let cloudKitProvider = CloudKitProvider()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Chalkboard"
+        cloudKitProvider.alertPresenter = self
+        cloudKitProvider.createTestRecord()
     }
 
 }
 
 extension ListSelectionViewController: AlertPresenter {
-    func presentAlert(alert: UIAlertController) {
+    func presentAlert(_ alert: UIAlertController) {
         self.present(alert, animated: true, completion: nil)
     }
 }

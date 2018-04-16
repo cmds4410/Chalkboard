@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         guard let navController = window?.rootViewController as? UINavigationController, let listSelectionVC = navController.viewControllers.first as? ListSelectionViewController else { return }
         let cloudKitProvider = CloudKitProvider()
-        cloudKitProvider.authenticate(presenter: listSelectionVC)
+        cloudKitProvider.alertPresenter = listSelectionVC
+        cloudKitProvider.authenticate()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

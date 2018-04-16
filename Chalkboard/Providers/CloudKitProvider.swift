@@ -11,17 +11,60 @@ import CloudKit
 
 class CloudKitProvider: NSObject {
 
-    func authenticate(presenter: AlertPresenter?) {
+    weak var alertPresenter: AlertPresenter?
+
+    func authenticate() {
         CKContainer.default().accountStatus { (accountStatus, error) in
             if (accountStatus == CKAccountStatus.noAccount) {
-                self.showLoginAlert(presenter: presenter)
+                self.showLoginAlert()
             }
         }
     }
 
-    private func showLoginAlert(presenter: AlertPresenter?) {
-        let alertController = UIAlertController(title: "Sign in to iCloud", message: "Sign in to your iCloud account to write records. On the Home screen, launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: nil))
-        presenter?.presentAlert(alert: alertController)
+    private func showLoginAlert() {
+        let alert = alertController(withTitle: UserFacingStrings.CloudKit.SignInTitle, message: UserFacingStrings.CloudKit.SignInMessage, cancelButtonTitle: UserFacingStrings.Common.Okay)
+        alertPresenter?.presentAlert(alert)
+    }
+
+}
+
+// MARK: Sync Records
+
+extension CloudKitProvider {
+
+    func createTestRecord() {
+        let testListRecordId = CKRecordID(recordName: "test list")
+        let testRecord = CKRecord(recordType: "List", recordID: testListRecordId)
+        testRecord["title"] = "List" as CKRecordValue
+        saveRecord(testRecord)
+    }
+
+    private func saveRecord(_ record: CKRecord) {
+        let myContainer = CKContainer.default()
+        let publicDatabase = myContainer.publicCloudDatabase
+        publicDatabase.save(record) { [weak self]
+            (record, error) in
+            if let error = error {
+                self?.showSyncError(error)
+            } else {
+                print("yay!")
+            }
+
+        }
+    }
+
+    private func showSyncError(_ error: Error?) {
+        let alert = alertController(withTitle: UserFacingStrings.Network.Error.Title, message: UserFacingStrings.Network.Error.Message, cancelButtonTitle: UserFacingStrings.Common.Okay)
+        alertPresenter?.presentAlert(alert)
+    }
+}
+
+// MARK: Helper
+
+extension CloudKitProvider {
+    func alertController(withTitle title: String?, message: String?, cancelButtonTitle: String?) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: nil))
+        return alertController
     }
 }
